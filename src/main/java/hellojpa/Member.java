@@ -1,7 +1,9 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
@@ -12,7 +14,18 @@ public class Member {
     @Column(name = "name", nullable = false)
     private String username;
 
+    private String city;
+    private String zipcode;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
     public Member() {
+    }
+
+    public void addOrders(Order order) {
+        orders.add(order);
+        order.setMember(this);
     }
 
     public Long getId() {
