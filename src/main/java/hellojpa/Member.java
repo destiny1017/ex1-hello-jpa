@@ -10,7 +10,9 @@ import java.util.List;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    @Column(name = "MEMBER_ID")
     private Long id;
+
     @Column(name = "name", nullable = false)
     private String username;
 
