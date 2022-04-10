@@ -16,34 +16,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Item item = new Item();
-            item.setName("item1");
-            em.persist(item);
 
-            Member member = new Member();
-            member.setUsername("TEST1");
-            em.persist(member);
+            Child child1 = new Child();
+            child1.setName("child1");
+            Child child2 = new Child();
+            child2.setName("child2");
+            Parent parent = new Parent();
+            parent.setName("parent1");
+            parent.addChild(child1);
+            parent.addChild(child2);
 
-            Order order = new Order();
-            order.setMember(member);
-            em.persist(order);
-
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-            orderItem.setItem(item);
-            orderItem.setCount(1);
-            orderItem.setOrderPrice(1000);
-            em.persist(orderItem);
-
-            em.flush();
-            em.clear();
-
-            OrderItem orderItem1 = em.find(OrderItem.class, orderItem.getId());
-//            System.out.println("orderItem1.toString() = " + orderItem1.toString());
-            System.out.println("=============");
-            System.out.println("orderItem1.order = " + orderItem1.getOrder());
-            System.out.println("=============");
-            System.out.println("orderItem1.item = " + orderItem1.getItem());
+            em.persist(parent);
+//            em.persist(child1);
+//            em.persist(child2);
 
             tx.commit();
         } catch(Exception e) {
