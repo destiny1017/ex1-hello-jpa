@@ -60,14 +60,4 @@ public class OrderItem {
         this.count = count;
     }
 
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "id=" + id +
-                ", item=" + item.getName() +
-                ", order=" + order.getMember().getUsername() +
-                ", orderPrice=" + orderPrice +
-                ", count=" + count +
-                '}';
-    }
 }

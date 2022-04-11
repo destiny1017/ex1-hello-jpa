@@ -17,19 +17,6 @@ public class JpaMain {
 
         try {
 
-            Child child1 = new Child();
-            child1.setName("child1");
-            Child child2 = new Child();
-            child2.setName("child2");
-            Parent parent = new Parent();
-            parent.setName("parent1");
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-//            em.persist(child1);
-//            em.persist(child2);
-
             tx.commit();
         } catch(Exception e) {
             tx.rollback();
